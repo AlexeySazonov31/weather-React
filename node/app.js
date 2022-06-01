@@ -10,6 +10,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 3000;
+const API_KEY = process.env.API_KEY;
+
+console.log(process.env)
 
 let wt;
 
@@ -25,7 +28,7 @@ app.use("/apiWT/:lat/:lon", (req, res) => {
     method: "GET",
     uri: `https://api.weather.yandex.ru/v1/forecast?lat=${req.params.lat}&lon=${req.params.lon}&lang=en_US&limit=7&hours=true&extra=false`,
     headers: {
-      "X-Yandex-API-Key": process.env.API_KEY,
+      "X-Yandex-API-Key": API_KEY,
     },
   };
 
