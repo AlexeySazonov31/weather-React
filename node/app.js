@@ -1,24 +1,31 @@
-import 'dotenv/config';
+import "dotenv/config";
 import express from "express";
 import request from "request";
 import bodyParser from "body-parser";
 
-const key = process.env.KEY;
-const PORT = process.env.PORT || 8080;
+import path from 'path';
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const PORT = process.env.PORT || 3000;
+
+let wt;
 
 let app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-let wt;
+app.use(express.static("build"));
 
-app.get("/apiWT/:lat/:lon", (req, res) => {
+app.use("/apiWT/:lat/:lon", (req, res) => {
   let options = {
     method: "GET",
     uri: `https://api.weather.yandex.ru/v1/forecast?lat=${req.params.lat}&lon=${req.params.lon}&lang=en_US&limit=7&hours=true&extra=false`,
     headers: {
-      "X-Yandex-API-Key": key,
+      "X-Yandex-API-Key": process.env.API_KEY,
     },
   };
 
@@ -33,6 +40,11 @@ app.get("/apiWT/:lat/:lon", (req, res) => {
   console.log("json send");
 });
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, 'build/index.html'));
+});
+
 app.listen(PORT, () => {
   console.log("running, port: " + PORT);
 });
+
