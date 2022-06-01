@@ -1,0 +1,10 @@
+{
+    "type": "module",
+    "dependencies": {
+        "body-parser": "^1.20.0",
+        "circular-json": "^0.5.9",
+        "dotenv": "^16.0.1",
+        "express": "^4.17.3",
+        "request": "^2.88.2"
+    }
+}
