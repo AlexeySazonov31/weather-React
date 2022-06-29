@@ -1,8 +1,8 @@
 import React from "react";
-import windIcon from "./images/wind.png";
-import rainIcon from "./images/rain.png";
-import cloudIcon from "./images/cloud.png";
-import pressureIcon from "./images/pressure.png";
+import windIcon from "../images/wind.png";
+import rainIcon from "../images/rain.png";
+import cloudIcon from "../images/cloud.png";
+import pressureIcon from "../images/pressure.png";
 
 function Now({ fact, geo, date }) {
   const icon = `https://yastatic.net/weather/i/icons/funky/dark/${fact.icon}.svg`;

@@ -1,12 +1,11 @@
 import "dotenv/config";
 import express from "express";
-import request from "request";
 import bodyParser from "body-parser";
 
 import fetch from 'node-fetch';
 
 import path from 'path';
-import { fileURLToPath } from 'url'
+import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -33,7 +32,7 @@ app.get( "/apiWT/:lat/:lon", (req, res) => {
       .then( res => res.json() )
       .then( data => {
         res.json( data );
-        console.log('!!!data sent!!!');
+        console.log('!!!data sent!!!,  ' + data.geo_object.locality.name);
       } )
       .catch((e) => {
         console.log(e);

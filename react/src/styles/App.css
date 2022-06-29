@@ -18,23 +18,23 @@ html {
 }
 
 .clear {
-  background-image: url('./images/clear.jpg');
+  background-image: url('../images/clear.jpg');
 }
 
 .cloudy {
-  background-image: url('./images/cloudy.jpg');
+  background-image: url('../images/cloudy.jpg');
 }
 
 .rain {
-  background-image: url('./images/rainB.jpg');
+  background-image: url('../images/rainB.jpg');
 }
 
 .snow {
-  background-image: url('./images/snow.jpg');
+  background-image: url('../images/snow.jpg');
 }
 
 .thunderstorm {
-  background-image: url('./images/thunderstorm.jpg');
+  background-image: url('../images/thunderstorm.jpg');
 }
 
 /*------sidePanel------------------------*/

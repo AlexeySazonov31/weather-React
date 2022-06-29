@@ -1,13 +1,35 @@
 import {useState} from 'react';
 import React from "react";
-import {YMaps, Map} from 'react-yandex-maps';
+
+import { Link } from 'react-router-dom';
 
 
-import BelСities from "./BelСities";
 
-const nameButtons = [ 'Now', 'Today', 'Tomorrow', 'Week'];
+//import BelСities from "./BelСities";
 
-function SidePanel({setPage, page, lat, lon, WtNull, setLatLon, wt}){
+const nameButtons = [ 
+    {
+        name: 'Now',
+        to: '/'
+    },
+    {
+        name: 'Today',
+        to: '/today'
+    },
+    {
+        name: 'Tomorrow',
+        to: '/tomorrow'
+    },
+    {
+        name: 'Week',
+        to: '/week'
+    },
+];
+
+function SidePanel(){
+
+    const [page, setPage] = useState(0);
+
 
 /*----SidePanel---------------*/
 
@@ -38,62 +60,29 @@ function SidePanel({setPage, page, lat, lon, WtNull, setLatLon, wt}){
     const buttons = nameButtons.map( (note, index) => {
         let elem;
         if( index === page ){
-            elem = <button key={index} className='menuButtonActive' onClick={() => {setPage(index);setSidePanelActive(false);}}>
-                {note}
+            elem = <Link to={note.to} key={index}>
+             <button className='menuButtonActive' onClick={() => {setPage(index);setSidePanelActive(false);}}>
+                {note.name}
             </button>
+            </Link>
         } else {
-            elem = <button key={index} className='menuButton' onClick={() => {setPage(index);setSidePanelActive(false);}}>
-                {note}
+            elem = <Link to={note.to}>
+                <button key={index} className='menuButton' onClick={() => {setPage(index);setSidePanelActive(false);}}>
+                {note.name}
             </button>
+            </Link>
         }
         return elem;
     } )
-/*-----Location--------------------------------*/
-    const [changeLocation, setChangeLocation] = useState(false);
-    const [valueLocation, setValueLocation] = useState('0');
+// Location  
 
-    const options = BelСities.map( (note, index) => {
-        return <option key={index} value={index}>{note.name}</option>
-    } )
-
-    let elemLocation;
-    if(!changeLocation){
-        elemLocation = <button className='changeLocationButton' onClick={() => setChangeLocation(!changeLocation)}>change location</button>
-    }else{
-        elemLocation = <div className='changeLocationTrue'>
-            <select
-            value={valueLocation} 
-            onChange={(event) => {
-                setValueLocation(event.target.value);
-                }}>
-                {options}
-            </select>
-            <button
-            onClick={() => {
-                setLatLon(BelСities[Number(valueLocation)].lat,BelСities[Number(valueLocation)].lon);
-                WtNull();
-                setChangeLocation(false);
-            }}>ok</button>
-        </div>
-    }
-
-    /*------maps----------------*/
-    let maps;
-    if(wt){
-        maps = <YMaps>
-        <Map defaultState={{ center: [lat, lon+0.23], zoom: 9 }} />
-    </YMaps>
-    }
 
 
     return <div className={classNameSidePanel} ref={rootEl}>
         <div className='headerSidePanel'>
             <div className='inlineHeaderPanel'>
                 <h2 className="logo">Weather</h2>
-                <button className={buttonMenuActive} onClick={() => {setSidePanelActive(!sidePanelActive)}}>&#9776;</button>
             </div>
-
-            {elemLocation}
         </div>
 
         <div className='buttonsMenu'>
@@ -101,7 +90,6 @@ function SidePanel({setPage, page, lat, lon, WtNull, setLatLon, wt}){
         </div>
 
         <div className="sideMap">
-            {maps}
         </div>
     </div>
 }
