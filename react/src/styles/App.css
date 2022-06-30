@@ -1,10 +1,6 @@
-html {
-  overflow: hidden;
-}
-
 .main {
   display: grid;
-  grid-template-rows: 1fr;
+  grid-template-columns: minmax(250px, 20%) 1fr ;
   height: 100vh;
   background-repeat: no-repeat;
   background-position: top center;
@@ -12,6 +8,14 @@ html {
   background-attachment: fixed;
   z-index: 0;
 }
+/* !! menu !! */
+@media (max-width: 1000px) {
+  .main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr;
+  }
+}
+
 
 .elseBack {
   background-color: rgb(219, 219, 219);
@@ -38,216 +42,111 @@ html {
 }
 
 /*------sidePanel------------------------*/
-.sidePanel {
-  position: fixed;
-  left: 0;
-  width: 300px;
+.menu {
+  width: 100%;
   display: grid;
-  justify-items: center;
-  -ms-flex-line-pack: distribute;
   align-content: space-around;
   height: 100vh;
   grid-template-columns: 1fr;
   background-color: rgba(0, 0, 0, 0.432);
-  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   z-index: 1;
-  -webkit-transition: left 1s;
-  -o-transition: left 1s;
   transition: left 1s;
 }
-
-/*   !!!!  ------------ */
-.sidePanelHidden {
-  position: fixed;
-  left: -300px;
-  width: 300px;
-  display: grid;
-  justify-items: center;
-  -ms-flex-line-pack: distribute;
-  align-content: space-around;
-  height: 100vh;
-  grid-template-columns: 1fr;
-
-  background-color: rgba(0, 0, 0, 0.432);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  z-index: 1;
-  -webkit-transition: left 1s;
-  -o-transition: left 1s;
-  transition: left 1s;
+@media (max-width: 1000px) {
+  .menu {
+    height: 85px;
+    grid-template-columns: 20% 1fr;
+    align-content: end;
+  }
 }
 
-/*   !!!!!!  ---------------- */
-.headerSidePanel {
-  display: grid;
-  grid-template-columns: 1fr;
-
-}
-
-.inlineHeaderPanel {
-  display: grid;
-  width: 100%;
-  grid-template-columns: 85% auto;
-}
-
-.ButtonMenuActive {
-  width: 60px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
+.headerMenu{
+  width: fit-content;
   height: fit-content;
-  -ms-flex-item-align: center;
-  align-self: center;
-  font-size: 40px;
-  font-weight: 100;
-  margin-top: 12%;
-  background-color: #00000000;
-  color: rgb(255, 255, 255);
-  border: none;
-  margin-left: 0;
-  margin-bottom: 0;
-  border-radius: 0;
-  -webkit-transition: all 0.4s 0.5s;
-  -o-transition: all 0.4s 0.5s;
-  transition: all 0.4s 0.5s;
+  justify-self: center;
 }
-
-/*---------------------*/
-.ButtonMenuHidden {
-  width: 80px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  -ms-flex-item-align: center;
-  align-self: center;
-  font-size: 50px;
-  font-weight: 900;
-  margin-top: 12%;
-  background-color: rgba(0, 0, 0, 0.432);
-  color: rgb(255, 255, 255);
-  border: none;
-  margin-left: 120%;
-  margin-bottom: 0%;
-  border-radius: 8px;
-  -webkit-transition: all 0.4s 0.5s;
-  -o-transition: all 0.4s 0.5s;
-  transition: all 0.4s 0.5s;
-}
-
-/*---------------------*/
-
-.buttonsMenu {
-  display: grid;
-  grid-template-columns: 1fr;
-  height: 250px;
-  width: 100%;
-}
-
-.menuButton {
-  background-color: rgba(0, 0, 0, 0);
-  color: rgb(214, 214, 214);
-  border: none;
-  text-align: right;
-
-  padding-right: 30%;
-  font-size: 19px;
-  border-right: 0px solid rgb(255, 255, 255);
-  -webkit-transition: 0.2s all;
-  -o-transition: 0.2s all;
-  transition: 0.2s all;
-}
-
-.menuButtonActive {
-  background-color: rgba(0, 0, 0, 0);
-  color: white;
-  border: none;
-  text-align: right;
-
-  padding-right: 40%;
-  font-size: 19px;
-  border-right: 4px solid rgb(255, 255, 255);
-  -webkit-transition: 0.2s all;
-  -o-transition: 0.2s all;
-  transition: 0.2s all;
+@media (max-width: 1000px) {
+  h2 {
+    margin: 0;
+    padding-bottom: 0;
+  }
+  h2 img {
+    width: 48px;
+  }
 }
 
 .logo {
   color: white;
-  justify-self: center;
   font-size: 38px;
 }
 
-.sideMap {
-  width: 70%;
-  height: 90%;
-  border-radius: 5px;
-  overflow: hidden;
-  padding-right: 5%;
+.buttonsMenu {
+  width: 100%;
+  height: 350px;
+  justify-self: end;
+  justify-items: end;
+  display: grid;
+  grid-template-columns: 1fr;
+  font-size: 23px;
 }
+.linkActive {
+  width: fit-content;
+  height: fit-content;
+  padding: 20px 30px;
+  text-decoration: none;
 
-/*-----Location-----------------------*/
-.changeLocationButton {
-  justify-self: center;
-  width: 90%;
-  height: 21px;
-  background-color: #00000000;
-  border: 1px solid rgb(211, 211, 211);
-  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0);
   color: white;
-  font-size: 17px;
-  -webkit-transition: background-color 0.15s;
-  -o-transition: background-color 0.15s;
-  transition: background-color 0.15s;
+  border: none;
+  padding-right: 40%;
+  border-right: 4px solid rgb(255, 255, 255);
+  transition: 0.2s all;
 
 }
+.linkNotActive{
+  width: fit-content;
+  height: fit-content;
+  padding: 20px 30px;
+  text-decoration: none;
 
-.changeLocationButton:hover {
-  background-color: #00000021;
-  -webkit-transition: background-color 0.15s;
-  -o-transition: background-color 0.15s;
-  transition: background-color 0.15s;
+
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(214, 214, 214);
+  border: none;
+  padding-right: 30%;
+  transition: 0.2s all;
 }
 
-.changeLocationTrue {
-  justify-self: center;
-  width: 90%;
+@media (max-width: 1000px) {
+
+  .buttonsMenu {
+    height: fit-content;
+    justify-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .linkActive {
+    padding: 5px 5px;
+    border: none;
+    transition: 0.2s all;
+  
+  }
+  .linkNotActive{
+    padding: 5px 5px;
+    border: none;
+
+    transition: 0.2s all;
+  }
+  .linkActive img {
+    width: 55px;
+    transition: width 0.3s;
+  }
+  .linkNotActive img {
+    width: 45px;
+    transition: width 0.3s;
+  }
 }
-
-.changeLocationTrue select {
-  width: 75%;
-  background-color: #00000000;
-  border: 1px solid rgb(211, 211, 211);
-  border-radius: 5px 0 0 5px;
-  height: 20px;
-  color: white;
-  font-size: 16px;
-}
-
-.changeLocationTrue option {
-  color: black;
-}
-
-.changeLocationTrue button {
-  width: 25%;
-  background-color: #00000000;
-  border: 1px solid rgb(211, 211, 211);
-  border-radius: 0 5px 5px 0;
-  height: 20px;
-  color: rgb(255, 255, 255);
-  font-size: 16px;
-  -webkit-transition: background-color 0.15s;
-  -o-transition: background-color 0.15s;
-  transition: background-color 0.15s;
-}
-
-.changeLocationTrue button:hover {
-  background-color: #00000021;
-  -webkit-transition: background-color 0.15s;
-  -o-transition: background-color 0.15s;
-  transition: background-color 0.15s;
-}
-
-
 
 /*------Now---------------------------------------------------*/
 .nowCard {
@@ -354,9 +253,6 @@ html {
 .blockInfo h4 {
   margin: 2%;
 }
-
-
-
 
 .lightNow {
   font-weight: 300;
