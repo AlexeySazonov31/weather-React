@@ -1,6 +1,6 @@
 .main {
   display: grid;
-  grid-template-columns: minmax(250px, 20%) 1fr ;
+  grid-template-columns: minmax(250px, 20%) 1fr;
   height: 100vh;
   background-repeat: no-repeat;
   background-position: top center;
@@ -8,6 +8,7 @@
   background-attachment: fixed;
   z-index: 0;
 }
+
 /* !! menu !! */
 @media (max-width: 1000px) {
   .main {
@@ -48,11 +49,12 @@
   align-content: space-around;
   height: 100vh;
   grid-template-columns: 1fr;
-  background-color: rgba(0, 0, 0, 0.432);
+  background-color: rgba(0, 0, 0, 0.61);
   backdrop-filter: blur(8px);
   z-index: 1;
   transition: left 1s;
 }
+
 @media (max-width: 1000px) {
   .menu {
     height: 85px;
@@ -61,16 +63,18 @@
   }
 }
 
-.headerMenu{
+.headerMenu {
   width: fit-content;
   height: fit-content;
   justify-self: center;
 }
+
 @media (max-width: 1000px) {
   h2 {
     margin: 0;
     padding-bottom: 0;
   }
+
   h2 img {
     width: 48px;
   }
@@ -90,6 +94,7 @@
   grid-template-columns: 1fr;
   font-size: 23px;
 }
+
 .linkActive {
   width: fit-content;
   height: fit-content;
@@ -104,7 +109,8 @@
   transition: 0.2s all;
 
 }
-.linkNotActive{
+
+.linkNotActive {
   width: fit-content;
   height: fit-content;
   padding: 20px 30px;
@@ -126,22 +132,26 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
+
   .linkActive {
     padding: 5px 5px;
     border: none;
     transition: 0.2s all;
-  
+
   }
-  .linkNotActive{
+
+  .linkNotActive {
     padding: 5px 5px;
     border: none;
 
     transition: 0.2s all;
   }
+
   .linkActive img {
     width: 55px;
     transition: width 0.3s;
   }
+
   .linkNotActive img {
     width: 45px;
     transition: width 0.3s;
@@ -154,7 +164,7 @@
   grid-template-columns: 1fr;
   -ms-flex-line-pack: start;
   align-content: start;
-  width: 70%;
+  width: 80%;
   margin: auto;
   background-color: rgba(0, 0, 0, 0.432);
   -webkit-backdrop-filter: blur(8px);
@@ -267,7 +277,7 @@
 
 .todayCard {
   display: grid;
-  width: 60%;
+  width: 80%;
   grid-template-columns: 1fr;
   -ms-flex-line-pack: start;
   align-content: start;
@@ -373,7 +383,7 @@
 
 .weekCard {
   display: grid;
-  width: 65%;
+  width: 75%;
   grid-template-columns: 1fr;
   -ms-flex-line-pack: start;
   align-content: start;
@@ -528,12 +538,20 @@
 }
 
 /*-----Adaptive----------------------------*/
+@media (max-width: 1150px) {
+
+  .byHours {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 1% 4%;
+  }
+}
 
 @media (max-width: 1150px) {
 
   /*---Now----------*/
   .nowCard {
-    width: 75%;
+    width: 85%;
+    padding-bottom: 7%;
   }
 
   /*-------------*/

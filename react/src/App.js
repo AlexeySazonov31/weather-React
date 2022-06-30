@@ -1,6 +1,6 @@
 import './styles/App.css';
 import { useState, useEffect } from 'react';
-import wtT from './wt';
+//import wtT from './wt';
 
 import Menu from './Menu';
 
@@ -21,33 +21,33 @@ function App() {
 	const [dataWT, setDataWT] = useState(null);
 	const [geoData, setGeoData] = useState({ lat: 53.9, lon: 27.5667 });
 
-	const [loading, setLoader] = useState(true);
-/*
-	useEffect( () => {
+	const [loading, setLoading] = useState(true);
 
-	} )
-*/
+	useEffect( () => {
+		fetch( `/apiWT/${geoData.lat}/${geoData.lon}` )
+	        .then( res => res.json() )
+			.then( data => {setDataWT(data);setLoading(false)} )
+			.catch( e => console.log(e) )
+	}, [] );
+
 	let city = 'Minsk';
 
-	//console.log(wtT);
-
-	let wt = wtT;
-
+	//  background --------------------------------
 	let backgroundClass;
-	if (wt) {
-		if (searchWord('clear', wt.fact.condition)) {
+	if (dataWT) {
+		if (searchWord('clear', dataWT.fact.condition)) {
 			backgroundClass = 'main clear';
-		} else if (searchWord('rain', wt.fact.condition) ||
-			searchWord('drizzle', wt.fact.condition) ||
-			searchWord('showers', wt.fact.condition) ||
-			searchWord('hail', wt.fact.condition)) {
+		} else if (searchWord('rain', dataWT.fact.condition) ||
+			searchWord('drizzle', dataWT.fact.condition) ||
+			searchWord('showers', dataWT.fact.condition) ||
+			searchWord('hail', dataWT.fact.condition)) {
 			backgroundClass = 'main rain';
-		} else if (searchWord('cloudy', wt.fact.condition) ||
-			searchWord('overcast', wt.fact.condition)) {
+		} else if (searchWord('cloudy', dataWT.fact.condition) ||
+			searchWord('overcast', dataWT.fact.condition)) {
 			backgroundClass = 'main cloudy';
-		} else if (searchWord('snow', wt.fact.condition)) {
+		} else if (searchWord('snow', dataWT.fact.condition)) {
 			backgroundClass = 'main snow';
-		} else if (searchWord('thunderstorm', wt.fact.condition)) {
+		} else if (searchWord('thunderstorm', dataWT.fact.condition)) {
 			backgroundClass = 'main thunderstorm';
 		} else {
 			backgroundClass = 'main elseBack';
@@ -55,12 +55,12 @@ function App() {
 	} else {
 		backgroundClass = 'main elseBack';
 	}
-	
+//-----------------------------------------------------
 
 
 
 
-// !!!!!!!!!!!!!!   <Route path='/tommorow' element={<Today todayWT={wt.forecasts[1]} date={wt.forecasts[1].date} todayRight={false} city={city} />} />
+
 
 	return <div className={backgroundClass}>
 		<Menu/>
@@ -68,10 +68,10 @@ function App() {
 			<div className='loader'></div>
 		) : (
 			<Routes>
-			<Route path='/' element={<Now fact={wt.fact} geo={city} date={wt.forecasts[0].date} />} />
-			<Route path='/today' element={<Today todayWT={wt.forecasts[0]} date={wt.forecasts[0].date} todayRight={true} city={city} />} />
-			<Route path="/week" element={<Week forecasts={wt.forecasts} yesterday={wt.yesterday} city={city} />} />
-
+			<Route path='/' element={<Now fact={dataWT.fact} geo={city} date={dataWT.forecasts[0].date} />} />
+			<Route path='/today' element={<Today todayWT={dataWT.forecasts[0]} date={dataWT.forecasts[0].date} todayRight={true} city={city} />} />
+			<Route path="/week" element={<Week forecasts={dataWT.forecasts} yesterday={dataWT.yesterday} city={city} />} />
+			<Route path='/tomorrow' element={<Today todayWT={dataWT.forecasts[1]} date={dataWT.forecasts[1].date} todayRight={false} city={city} />} />
 			<Route path='/not-found-404' element={<NotFound />} />
 			<Route path='*' element={<Navigate to="/not-found-404" />} />
 
