@@ -8,6 +8,7 @@ import Now from './pages/Now';
 import Today from './pages/Today';
 import Week from './pages/Week';
 import NotFound from './pages/NotFound';
+import Geosearch from './pages/Geosearch';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
 
@@ -17,20 +18,22 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 function App() {
 
-
 	const [dataWT, setDataWT] = useState(null);
-	const [geoData, setGeoData] = useState({ lat: 53.9, lon: 27.5667 });
+	const [geoData, setGeoData] = useState({ lat: 53.9, lon: 27.5667, name: 'Minsk' });
 
 	const [loading, setLoading] = useState(true);
 
+
 	useEffect( () => {
+		setLoading(true);
 		fetch( `/apiWT/${geoData.lat}/${geoData.lon}` )
 	        .then( res => res.json() )
 			.then( data => {setDataWT(data);setLoading(false)} )
 			.catch( e => console.log(e) )
-	}, [] );
 
-	let city = 'Minsk';
+
+	}, [geoData] );
+
 
 	//  background --------------------------------
 	let backgroundClass;
@@ -63,15 +66,16 @@ function App() {
 
 
 	return <div className={backgroundClass}>
-		<Menu/>
+		<Menu name={geoData.name}/>
 		{ loading ? (
 			<div className='loader'></div>
 		) : (
 			<Routes>
-			<Route path='/' element={<Now fact={dataWT.fact} geo={city} date={dataWT.forecasts[0].date} />} />
-			<Route path='/today' element={<Today todayWT={dataWT.forecasts[0]} date={dataWT.forecasts[0].date} todayRight={true} city={city} />} />
-			<Route path="/week" element={<Week forecasts={dataWT.forecasts} yesterday={dataWT.yesterday} city={city} />} />
-			<Route path='/tomorrow' element={<Today todayWT={dataWT.forecasts[1]} date={dataWT.forecasts[1].date} todayRight={false} city={city} />} />
+			<Route path='/' element={<Geosearch  setGeoData={setGeoData}/>} />
+			<Route path='/now' element={<Now fact={dataWT.fact} geo={geoData.name} date={dataWT.forecasts[0].date} />} />
+			<Route path='/today' element={<Today todayWT={dataWT.forecasts[0]} date={dataWT.forecasts[0].date} todayRight={true} city={geoData.name} />} />
+			<Route path="/week" element={<Week forecasts={dataWT.forecasts} yesterday={dataWT.yesterday} city={geoData.name} />} />
+			<Route path='/tomorrow' element={<Today todayWT={dataWT.forecasts[1]} date={dataWT.forecasts[1].date} todayRight={false} city={geoData.name} />} />
 			<Route path='/not-found-404' element={<NotFound />} />
 			<Route path='*' element={<Navigate to="/not-found-404" />} />
 

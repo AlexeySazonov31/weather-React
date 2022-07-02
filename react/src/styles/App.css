@@ -3,7 +3,7 @@
   grid-template-columns: minmax(250px, 20%) 1fr;
   height: 100vh;
   background-repeat: no-repeat;
-  background-position: top center;
+  background-position: center center;
   background-size: auto 100%;
   background-attachment: fixed;
   z-index: 0;
@@ -57,19 +57,40 @@
 
 @media (max-width: 1000px) {
   .menu {
-    height: 85px;
-    grid-template-columns: 20% 1fr;
+    height: 80px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     align-content: end;
   }
 }
 
 .headerMenu {
-  width: fit-content;
   height: fit-content;
+  width: fit-content;
+  max-width: 70%;
+
   justify-self: center;
 }
+.headerMenu h2 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
+.headerMenu hr {
+  border: 1px solid rgb(185, 185, 185);
+}
+
+.headerMenu h3 {
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+  color: rgb(221, 221, 221);
+}
+
+
 
 @media (max-width: 1000px) {
+
   h2 {
     margin: 0;
     padding-bottom: 0;
@@ -129,34 +150,131 @@
   .buttonsMenu {
     height: fit-content;
     justify-items: center;
+    align-items: end;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    height: 100%;
   }
 
   .linkActive {
     padding: 5px 5px;
     border: none;
-    transition: 0.2s all;
+    border-bottom: 3px solid white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 
+    transition: 0.1s all;
   }
 
   .linkNotActive {
     padding: 5px 5px;
     border: none;
+    border-bottom: 0px solid white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 
-    transition: 0.2s all;
+    transition: 0.1s all;
   }
 
   .linkActive img {
     width: 55px;
-    transition: width 0.3s;
+    margin-bottom: 5px;
+
+    transition: all 0.1s;
+
   }
 
   .linkNotActive img {
     width: 45px;
-    transition: width 0.3s;
+    margin-bottom: 12px;
+    transition: all 0.1s;
   }
 }
+
+/*-----Geosearch----------------------------------------------*/
+
+.geosearchCard {
+  display: grid;
+  grid-template-columns: 1fr;
+  -ms-flex-line-pack: start;
+  align-content: start;
+  width: 80%;
+  margin: auto;
+  margin-top: 5%;
+  background-color: rgba(0, 0, 0, 0.432);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  padding: 3% 5%;
+  margin-bottom: 7%;
+  padding-top: 2%;
+}
+.geosearchCard h1{
+  color: white;
+  text-align: center;
+  margin-bottom: 2%;
+}
+.geosearchCard input{
+  width: 80%;
+  margin: auto;
+  padding: 10px 6px;
+  font-size: 22px;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.349);
+}
+.geosearchCard input::-webkit-input-placeholder {
+  color: rgb(224, 224, 224);
+  font-size: 20px;
+}
+.geosearchCard input:-moz-placeholder {
+  color: rgb(224, 224, 224);
+  font-size: 20px;
+}
+.geosearchCard h3{
+  width: fit-content;
+  color: rgb(192, 192, 192);
+  font-size: 17px;
+  text-align: center;
+  margin: auto;
+  font-weight: 400;
+  padding: 0 30px;
+}
+
+.geosearchCard ul{
+  list-style: none;
+  padding-left: 0;
+}
+.geosearchCard ul li{
+  width: 93%;
+  border-bottom: 1px solid black;
+  margin: 10px;
+  transition: all 0.2s;
+}
+.geosearchCard ul li .link {
+  width: 94%;
+  display: grid;
+  grid-template-columns: 1fr 10%;
+  justify-items: stretch;
+  align-items: center;
+  color: white;
+  font-size: 21px;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+}
+
+.geosearchCard ul li:hover{
+  width: 70%;
+  border-bottom: 1px solid rgb(255, 255, 255);
+
+  transition: all 0.2s;
+}
+
 
 /*------Now---------------------------------------------------*/
 .nowCard {
@@ -456,8 +574,6 @@
   justify-self: center;
   padding: 0% 10% 3% 10%;
   border-radius: 8px;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
   width: fit-content;
   color: white;
   font-weight: 300;
@@ -569,7 +685,7 @@
 
 }
 
-@media (max-width: 990px) {
+@media (max-width: 1080px) {
 
   /*---Now----------*/
   .nowCard {
@@ -589,7 +705,7 @@
 
 }
 
-@media (max-width: 901px) {
+@media (max-width: 1000px) {
 
   /*---Now----------*/
   .nowCard {
@@ -599,7 +715,7 @@
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
     padding-bottom: 25%;
   }
 
@@ -643,6 +759,7 @@
 
   .todayCard {
     width: 80%;
+    margin-bottom: 5%;
   }
 
   .byHours {
@@ -664,6 +781,21 @@
     justify-content: space-evenly;
   }
 
+    /*--------------*/
+
+    .todayCard {
+      margin-top: 50px;
+    }
+    .nowCard {
+      margin-top: 50px;
+    }
+    .geosearchCard {
+      margin-top: 50px;
+    }
+    .weekCard {
+      margin-top: 50px;
+    }
+
 
 }
 
@@ -673,6 +805,22 @@
   .todayCard {
     margin-top: 3%;
   }
+
+
+    /*--------------*/
+
+    .todayCard {
+      margin-top: 50px;
+    }
+    .nowCard {
+      margin-top: 50px;
+    }
+    .geosearchCard {
+      margin-top: 50px;
+    }
+    .weekCard {
+      margin-top: 50px;
+    }
 
   /*-------------*/
 }
@@ -709,6 +857,21 @@
     justify-content: space-evenly;
     row-gap: 1%;
   }
+
+    /*--------------*/
+
+    .todayCard {
+      margin-top: 50px;
+    }
+    .nowCard {
+      margin-top: 50px;
+    }
+    .geosearchCard {
+      margin-top: 50px;
+    }
+    .weekCard {
+      margin-top: 50px;
+    }
 }
 
 @media (max-width: 550px) {
@@ -747,9 +910,8 @@
   .weekCard {
     width: 60%;
     margin: 5% auto;
-    padding-bottom: 63%;
+    padding-bottom: 35%;
   }
-
   .daysWeekBlock {
     -webkit-box-pack: space-evenly;
     -ms-flex-pack: space-evenly;
@@ -762,12 +924,32 @@
     grid-template-rows: 1fr 1fr 1fr;
     height: 100px;
   }
+  /*--------------*/
+
+  .todayCard {
+    margin-top: 50px;
+  }
+  .nowCard {
+    margin-top: 50px;
+  }
+  .geosearchCard {
+    margin-top: 50px;
+  }
+  .weekCard {
+    margin-top: 50px;
+  }
 }
 
 @media (max-width: 450px) {
 
+  .geosearchCard {
+    margin-top: 50px;
+  }
+
+    /*----Today---------------------*/
+
   .nowCard {
-    margin-top: 10%;
+    margin-top: 50px;
     padding-bottom: 32%;
   }
 
@@ -779,11 +961,20 @@
     margin-left: 40%;
   }
 
+
+  /*----Today---------------------*/
+
+  .todayCard {
+    margin-top: 50px;
+  }
+
+
   /*----WEEK---------------------*/
   .weekCard {
     width: 80%;
     margin: 5% auto;
     padding-bottom: 50%;
+    margin-top: 50px;
   }
 
   .daysWeekBlock {
