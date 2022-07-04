@@ -9,7 +9,6 @@ function Now({ fact, geo, date }) {
 
   return (
     <div className="nowCard">
-
       <div className="headerNow">
         <h1>Now in {geo}</h1>
       </div>
@@ -20,36 +19,31 @@ function Now({ fact, geo, date }) {
       </div>
 
       <div className="mainNow">
-
         <div>
+          <img src={icon} alt="icon weather" />
 
-            <img src={icon} alt="icon weather" />
-
-            <div className="bottomImgInfo">
-              <div>
-                <h3 className="lightNow">Temp</h3>
-                <h3 className="boldNow">{fact.temp} °C</h3>
-              </div>
-              <div>
-                <h3 className="lightNow">Feels Like</h3>
-                <h3 className="boldNow">{fact.feels_like} °C</h3>
-              </div>
-              <div>
-                <h3 className="lightNow">Humidity</h3>
-                <h3 className="boldNow">{fact.humidity} %</h3>
-              </div>
+          <div className="bottomImgInfo">
+            <div>
+              <h3 className="lightNow">Temp</h3>
+              <h3 className="boldNow">{fact.temp} °C</h3>
             </div>
-
+            <div>
+              <h3 className="lightNow">Feels Like</h3>
+              <h3 className="boldNow">{fact.feels_like} °C</h3>
+            </div>
+            <div>
+              <h3 className="lightNow">Humidity</h3>
+              <h3 className="boldNow">{fact.humidity} %</h3>
+            </div>
+          </div>
         </div>
 
         <div className="additionalInformation">
-
           <div className="additionalHeader">
             <h3>{condition(fact.condition)}</h3>
           </div>
 
           <div className="additionalContainerInfo">
-
             <div className="blockInfo">
               <img src={windIcon} alt="windIcon" />
               <div className="blockInfoText">
@@ -97,11 +91,8 @@ function Now({ fact, geo, date }) {
                 </h4>
               </div>
             </div>
-
           </div>
-
         </div>
-
       </div>
     </div>
   );
