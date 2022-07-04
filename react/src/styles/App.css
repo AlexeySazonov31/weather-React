@@ -1,7 +1,8 @@
+
 .main {
+  min-height: 100vh;
   display: grid;
   grid-template-columns: minmax(250px, 20%) 1fr;
-  height: 100vh;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: auto 100%;
@@ -45,6 +46,7 @@
 /*------sidePanel------------------------*/
 .menu {
   width: 100%;
+  min-height: 100%;
   display: grid;
   align-content: space-around;
   height: 100vh;
@@ -57,7 +59,8 @@
 
 @media (max-width: 1000px) {
   .menu {
-    height: 80px;
+    width: 100%;
+    height: 68px;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     align-content: end;
@@ -150,9 +153,10 @@
   .buttonsMenu {
     height: fit-content;
     justify-items: center;
+    justify-content: center;
     align-items: end;
     display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-columns:repeat( 5, 19% );
     height: 100%;
   }
 
@@ -179,7 +183,7 @@
   }
 
   .linkActive img {
-    width: 55px;
+    width: 45px;
     margin-bottom: 5px;
 
     transition: all 0.1s;
@@ -187,7 +191,7 @@
   }
 
   .linkNotActive img {
-    width: 45px;
+    width: 37px;
     margin-bottom: 12px;
     transition: all 0.1s;
   }
@@ -208,7 +212,6 @@
   backdrop-filter: blur(8px);
   border-radius: 10px;
   padding: 3% 5%;
-  margin-bottom: 7%;
   padding-top: 2%;
 }
 .geosearchCard h1{
@@ -698,6 +701,7 @@
     width: 80%;
   }
 
+
   /*----WEEK---------------------*/
   .weekCard {
     width: 83%;
@@ -759,7 +763,6 @@
 
   .todayCard {
     width: 80%;
-    margin-bottom: 5%;
   }
 
   .byHours {
