@@ -1,6 +1,5 @@
 import "./styles/App.css";
 import { useState, useEffect } from "react";
-//import wtT from './wt';
 
 import Menu from "./Menu";
 

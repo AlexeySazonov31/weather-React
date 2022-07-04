@@ -12,8 +12,8 @@ const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 8080;
 const API_KEY = process.env.API_KEY;
+const USER_NAME = process.env.USER_NAME;
 
-let wt;
 
 let app = express();
 
@@ -32,7 +32,7 @@ app.get( "/apiWT/:lat/:lon", (req, res) => {
       .then( res => res.json() )
       .then( data => {
         res.json( data );
-        console.log('!!!data sent!!!,  ' + data.geo_object.locality.name);
+        console.log(`!!!data sent!!!, ${data.geo_object.locality.name}` );
       } )
       .catch((e) => {
         console.log(e);
@@ -40,11 +40,11 @@ app.get( "/apiWT/:lat/:lon", (req, res) => {
 } )
 
 app.get( "/apiGeo/:search", (req, res) => {
-  fetch(`http://api.geonames.org/searchJSON?q=${req.params.search}&maxRows=6&username=sazonov`)
+  fetch(`http://api.geonames.org/searchJSON?q=${req.params.search}&maxRows=6&username=${USER_NAME}`)
       .then( res => res.json() )
       .then( data => {
         res.json( data );
-        console.log('!!!search location!!!');
+        console.log(`!!!search location!!!, ${req.params.search}`);
       } )
       .catch((e) => {
         console.log(e);
@@ -55,6 +55,7 @@ app.get( "/apiGeo/:search", (req, res) => {
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, 'build/index.html'));
 });
+
 
 app.listen(PORT, () => {
   console.log("running, port: " + PORT);
