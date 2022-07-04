@@ -38,7 +38,7 @@ const nameButtons = [
 ];
 
 function Menu({ name }) {
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const location = useLocation();
 
