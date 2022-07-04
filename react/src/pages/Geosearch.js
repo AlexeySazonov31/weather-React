@@ -12,9 +12,10 @@ function Geosearch({setGeoData}){
     console.log(search);
     console.log(possOptData);
 
+
     useEffect( () => {
         if( search.length > 0 ){
-            fetch(`http://api.geonames.org/searchJSON?q=${search}&maxRows=6&username=sazonov`)
+            fetch(`/apiGeo/${search}`)
             .then( res => res.json() )
             .then( data => data.geonames ? setPossOptData(data.geonames) : setPossOptData([]) )
             .catch( (e) => console.log(e) )

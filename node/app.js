@@ -39,6 +39,19 @@ app.get( "/apiWT/:lat/:lon", (req, res) => {
       })
 } )
 
+app.get( "/apiGeo/:search", (req, res) => {
+  fetch(`http://api.geonames.org/searchJSON?q=${req.params.search}&maxRows=6&username=sazonov`)
+      .then( res => res.json() )
+      .then( data => {
+        res.json( data );
+        console.log('!!!search location!!!');
+      } )
+      .catch((e) => {
+        console.log(e);
+      })
+} )
+
+
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, 'build/index.html'));
 });
