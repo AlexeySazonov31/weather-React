@@ -303,6 +303,7 @@
 
 .headerNow h1 {
   margin: 0;
+  margin-top: 10px;
 }
 
 .dateInfo h3 {
@@ -382,7 +383,7 @@
 
 .blockInfo h3,
 .blockInfo h4 {
-  margin: 2%;
+  margin: 4%;
 }
 
 .lightNow {
@@ -390,7 +391,7 @@
 }
 
 .boldNow {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 
@@ -464,7 +465,7 @@
 .conditionTodayBlock {
   background-color: rgba(163, 163, 163, 0.308);
   text-align: center;
-  padding: 0% 10% 3% 10%;
+  padding: 3% 10% 5% 10%;
   border-radius: 8px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -484,13 +485,12 @@
   justify-self: center;
   background-color: rgba(163, 163, 163, 0.308);
   text-align: center;
-  padding: 3% 5%;
+  padding: 5% 5%;
   border-radius: 8px;
   width: 95%;
   color: white;
   font-weight: 300;
   font-size: 15px;
-
 }
 
 .bottomInfoTodayBlock span {
@@ -575,7 +575,7 @@
 .conditionWeekDayCard {
   background-color: rgba(163, 163, 163, 0.308);
   justify-self: center;
-  padding: 0% 10% 3% 10%;
+  padding: 3% 10% 4% 10%;
   border-radius: 8px;
   width: fit-content;
   color: white;
@@ -592,7 +592,7 @@
   background-color: rgba(163, 163, 163, 0.308);
   justify-self: center;
   text-align: center;
-  padding: 3% 5%;
+  padding: 2% 5%;
   border-radius: 8px;
   width: 95%;
   color: white;
@@ -605,7 +605,7 @@
 }
 
 .bottomInfoWeekDayCard h4 {
-  margin: 0;
+  margin: 7% 0;
   padding: 0;
   font-weight: 300;
 }
