@@ -19,7 +19,7 @@ function App() {
     lon: 27.5667,
     name: "Minsk",
   });
-
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -27,10 +27,19 @@ function App() {
     fetch(`/apiWT/${geoData.lat}/${geoData.lon}`)
       .then((res) => res.json())
       .then((data) => {
-        setDataWT(data);
+        if (data.fact) {
+          setDataWT(data);
+          setError(null);
+        } else {
+          setError("error: undefined");
+        }
         setLoading(false);
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        console.log(e);
+        setError(e);
+        setLoading(false);
+      });
   }, [geoData]);
 
   //  background --------------------------------
@@ -62,11 +71,32 @@ function App() {
   }
   //-----------------------------------------------------
 
+
   return (
     <div className={backgroundClass}>
       <Menu name={geoData.name} />
       {loading ? (
         <div className="loader"></div>
+      ) : error ? (
+        <div
+          style={{
+            color: "white",
+            margin: "auto",
+            background: "#8B0000",
+            padding: "5%",
+            borderRadius: "10px",
+          }}
+        >
+          <h1>Error</h1>
+          <h1>!!! Try to reload the page !!!</h1>
+          <h3>
+            {typeof error === "string"
+              ? error
+              : error.message
+              ? "Error: " + error.message
+              : ""}
+          </h3>
+        </div>
       ) : (
         <Routes>
           <Route path="/" element={<Geosearch setGeoData={setGeoData} />} />

@@ -35,6 +35,7 @@ app.get( "/apiWT/:lat/:lon", (req, res) => {
         console.log(`!!!data sent!!!, ${data.geo_object.locality.name}` );
       } )
       .catch((e) => {
+        res.json({message: e})
         console.log(e);
       })
 } )
